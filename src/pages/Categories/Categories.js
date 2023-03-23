@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Categories() {
+function PageCategories() {
     return <section>Category</section>;
 }
 
-export default Categories;
+export default PageCategories;

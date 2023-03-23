@@ -1,15 +1,15 @@
 import { PageHome } from '~/pages/Home';
-import { Categories } from '~/pages/Categories';
+import { PageCategories } from '~/pages/Categories';
 
 const publicRoutes = [
     {
-        path: '/Home',
+        path: '/',
         component: PageHome,
     },
 
     {
         path: '/categories',
-        component: Categories,
+        component: PageCategories,
         layout: null,
     },
 ];

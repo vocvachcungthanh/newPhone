@@ -1,7 +1,14 @@
 import React from 'react';
 
-function DefaultLayout({ Children }) {
-    return <section className="default-layout">{Children}</section>;
+import { Header } from './components/header';
+
+function DefaultLayout({ children }) {
+    return (
+        <section className="default-layout">
+            <Header />
+            {children}
+        </section>
+    );
 }
 
 export default DefaultLayout;
