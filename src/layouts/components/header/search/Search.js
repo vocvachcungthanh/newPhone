@@ -1,22 +1,28 @@
 import React from 'react';
+import Tippy from '@tippyjs/react/headless';
 
-function Search(props) {
+import SearchInput from './SearchInput';
+import SearchResult from './SearchResult';
+import { Wrapper as PopperWrapper } from '../../../../components/commons/Popper';
+
+function Search() {
+    const [dataSearch, setDataSearch] = React.useState([]);
+
     return (
-        <form
-            action=""
-            method="get"
-            className="flex items-center ml-[131px] max-w-[340px] w-full border border-[#eb3e32] rounded-[5px] overflow-hidden"
+        <Tippy
+            interactive
+            animation={true}
+            visible={dataSearch.length > 0}
+            render={(attrs) => (
+                <PopperWrapper tabIndex="-1" className="-mt-3 max-w-[338px] w-[338px]" {...attrs}>
+                    <SearchResult />
+                </PopperWrapper>
+            )}
         >
-            <input
-                type="text"
-                placeholder="Tìm kiếm sản phẩm ...."
-                className="flex pl-2.5 h-10 w-full focus-visible: outline-none placeholder:text-[#999ea1] placeholder:text-sm placeholder: font-light text-sm"
-            />
-
-            <button className="flex ml-auto w-10 pr-2.5">
-                <img src="./iconsearch.png" alt="" />
-            </button>
-        </form>
+            <div className="flex items-center ml-[131px] max-w-[338px] w-full border border-[#eb3e32] rounded-[5px] overflow-hidden">
+                <SearchInput />
+            </div>
+        </Tippy>
     );
 }
 
