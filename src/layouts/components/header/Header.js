@@ -1,15 +1,25 @@
 import React from 'react';
+
 import HeaderLogo from './HeaderLogo';
-import Search from './search';
+import Search from './Search';
+import { HotLine } from './HotLine';
+import { Account } from './Account';
+import { HeaderFavoriteProduct } from './FavoriteProduct';
+import { HeaderCart } from './Cart';
+import { HeaderCompare } from './Compare';
 
 function Header(props) {
     return (
         <header className="header py-2.5">
-            <div className="max-w-[1230px] w-full m-auto">
-                <div className="flex items-center">
+            <div className="phone-container">
+                <div className="flex items-center pr-5">
                     <HeaderLogo />
-
                     <Search />
+                    <HotLine />
+                    <Account />
+                    <HeaderFavoriteProduct />
+                    <HeaderCart />
+                    <HeaderCompare />
                 </div>
             </div>
         </header>

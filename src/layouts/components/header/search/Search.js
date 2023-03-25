@@ -3,10 +3,10 @@ import Tippy from '@tippyjs/react/headless';
 
 import SearchInput from './SearchInput';
 import SearchResult from './SearchResult';
-import { Wrapper as PopperWrapper } from '../../../../components/commons/Popper';
+import { Wrapper as PopperWrapper } from '~/components/commons/Popper';
 
 function Search() {
-    const [dataSearch, setDataSearch] = React.useState([]);
+    const [dataSearch] = React.useState([]);
 
     return (
         <Tippy
@@ -19,7 +19,7 @@ function Search() {
                 </PopperWrapper>
             )}
         >
-            <div className="flex items-center ml-[131px] max-w-[338px] w-full border border-[#eb3e32] rounded-[5px] overflow-hidden">
+            <div className="flex items-center ml-[103px] max-w-[338px] w-full border border-[#eb3e32] rounded-[5px] overflow-hidden">
                 <SearchInput />
             </div>
         </Tippy>
