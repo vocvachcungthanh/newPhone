@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/commons/Popper';
 import { IconSvg } from '~/components/commons/icons';
 import { IconCart } from '~/assets/images';
+import CartBody from './CartBody';
 
 function HeaderCart() {
     return (
@@ -12,9 +13,10 @@ function HeaderCart() {
             interactive
             animation="scale"
             placement="bottom"
+            visible={true}
             render={(attrs) => (
                 <PopperWrapper tabIndex="-1" className="max-w-[340px] w-[340px]" {...attrs}>
-                    <div>sdfasdf</div>
+                    <CartBody />
                 </PopperWrapper>
             )}
         >
