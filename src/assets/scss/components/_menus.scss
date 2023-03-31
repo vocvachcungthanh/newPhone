@@ -1,0 +1,35 @@
+.menu__mega {
+    &::before {
+        content: '';
+        width: 1px;
+        height: 20px;
+        background: #fff;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+}
+
+.menu__title {
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        height: 2px;
+        left: 0;
+    }
+
+    &::before {
+        width: 15px;
+        top: calc(50% - 3px);
+        transform: translateY(-50%);
+    }
+
+    &::after {
+        width: 10px;
+        top: calc(50% + 3px);
+        transform: translateY(-50%);
+    }
+}

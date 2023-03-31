@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/commons/Popper';
 import { IconSvg } from '~/components/commons/icons';
 import { IconCart } from '~/assets/images';
 import CartBody from './CartBody';
 import CartFooter from './CartFooter';
+import NoCart from './NoCart';
 
 const initStart = [
     {
@@ -37,28 +38,34 @@ const initStart = [
 function HeaderCart() {
     const [carts, setCarts] = React.useState(initStart || []);
 
-    const [isCart, setIsCart] = React.useState(false);
+    const [visible, setVisible] = React.useState(false);
 
     const handleCart = (dataItem) => {
         setCarts(dataItem);
     };
 
-    console.log(isCart);
-
     return (
-        <Tippy
+        <HeadlessTippy
             interactive
-            animation="scale"
             placement="bottom"
-            visible={isCart}
+            visible={visible}
             render={(attrs) => (
-                <PopperWrapper tabIndex="-1" className="max-w-[340px] w-[340px]" {...attrs}>
-                    <CartBody dataItem={carts} onCart={handleCart} />
-                    <CartFooter dataItem={carts || []} />
-                </PopperWrapper>
+                <div tabIndex="-1" {...attrs}>
+                    <PopperWrapper className={`max-w-[340px] w-[340px] ${visible ? 'showTippy' : ''}`}>
+                        {carts.length > 0 ? (
+                            <React.Fragment>
+                                <CartBody dataItem={carts} onCart={handleCart} />
+                                <CartFooter dataItem={carts || []} />
+                            </React.Fragment>
+                        ) : (
+                            <NoCart />
+                        )}
+                    </PopperWrapper>
+                </div>
             )}
+            onClickOutside={() => setVisible(false)}
         >
-            <div className="flex items-center ml-6" onClick={() => setIsCart(!isCart)}>
+            <div className="flex items-center ml-6" onMouseMove={() => setVisible(true)}>
                 <Link to="/" className="icon relative w-6">
                     <IconSvg icon={IconCart} className="w-6" id="cart" content="Giỏ hàng" />
                     <span className="total w-4 h-4 absolute inline-block text-center text-white bg-[#eb3e32] text-[10px]  -top-0 -right-4 rounded-full">
@@ -66,7 +73,7 @@ function HeaderCart() {
                     </span>
                 </Link>
             </div>
-        </Tippy>
+        </HeadlessTippy>
     );
 }
 

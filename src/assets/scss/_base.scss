@@ -27,3 +27,34 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+
+.showTippy {
+    animation: showHover forwards 0.3s;
+}
+
+.outTippy {
+    animation: hiddenHover forwards 0.3s;
+}
+
+@keyframes showHover {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes hiddenHover {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}
